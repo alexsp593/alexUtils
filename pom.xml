@@ -10,7 +10,12 @@
 
 
     <dependencies>
-        <!-- 引入 net.sf.json-->
+        <!-- pager-->
+        <dependency>
+            <groupId></groupId>
+            <artifactId></artifactId>
+        </dependency>
+        <!--net.sf.json-->
         <dependency>
             <groupId>net.sf.json-lib</groupId>
             <artifactId>json-lib</artifactId>

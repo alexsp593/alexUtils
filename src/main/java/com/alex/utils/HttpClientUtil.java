@@ -20,7 +20,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by shipeng on 2018/6/5.
+ * @Deception:HttpClient工具类
+ * @Author:Alex
+ * @Date:2018年06月05日11点16分
  */
 public class HttpClientUtil {
 

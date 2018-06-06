@@ -8,8 +8,9 @@ import java.net.URLDecoder;
 import java.net.URLEncoder;
 
 /**
- * Cookie 工具类
- * Created by shipeng on 2018/6/4.
+ * @Deception:Cookie工具类
+ * @Author:Alex
+ * @Date:2018年06月04日14点16分
  */
 public class CookieUtils {
 
