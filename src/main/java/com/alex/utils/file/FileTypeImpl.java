@@ -52,12 +52,8 @@ public class FileTypeImpl {
     }
 
     /**
-     * Created on 2010-7-1
-     * <p>Discription:[getFileByFile,获取文件类型,包括图片,若格式不是已配置的,则返回null]</p>
-     *
+     * 获取文件类型,包括图片,若格式不是已配置的,则返回null
      * @param file
-     * @return fileType
-     * @author:[shixing_11@sina.com]
      */
     public final static String getFileType(File file) {
         String filetype = null;
@@ -75,12 +71,8 @@ public class FileTypeImpl {
     }
 
     /**
-     * Created on 2010-7-1
      * <p>Discription:[getFileTypeByStream]</p>
-     *
      * @param b
-     * @return fileType
-     * @author:[shixing_11@sina.com]
      */
     public final static String getFileTypeByStream(byte[] b) {
         String                             filetypeHex   = String.valueOf(getFileHexString(b));
@@ -96,12 +88,8 @@ public class FileTypeImpl {
     }
 
     /**
-     * Created on 2010-7-1
      * <p>Discription:[getFileHexString]</p>
-     *
      * @param b
-     * @return fileTypeHex
-     * @author:[shixing_11@sina.com]
      */
     public final static String getFileHexString(byte[] b) {
         StringBuilder stringBuilder = new StringBuilder();
