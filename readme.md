@@ -65,42 +65,266 @@
     static String doPostJson(String url, String json)
     post方式请求数据(json参数方式)
 
-## FastDFSClient工具类
+# 正则相关的工具类(RegUtil)
+## 常量方法
+    static boolean isNumeric(String src)
+    判断是否数字表示
+    static boolean isABC(String src)
+    判断是否纯字母组合
+    static boolean isFloatNumeric(String src)
+    判断是否浮点数字表示
+    static boolean isMatche(String str, String reg)
+    判断字符串str是否符合正则表达式reg
+    static int countSubStrReg(String str, String reg)
+    获取符合reg正则表达式的字符串在String中出现的次数
+    static boolean validateEmail(String email)
+    验证邮箱是否有效
+    static boolean validateMobile(String mobile)
+    验证手机是否有效
+    static boolean validateTel(String tel)
+    验证固定电话是否有效
+    static boolean validateName(String name)
+    验证姓名是否有效
+    static boolean validateIdCard(String idCardNumber)
+    验证身份证是否有效
+    static boolean validateBankCardNumber(String bankCardNumber)
+    验证银行卡是否有效
+    static boolean validatePostalCode(String postalCode)
+    验证邮编是否有效
+
+# 分页工具类(page)
+## 定义起始数与限定数类(RowBounds)
+    final int offset                        起始数
+    final int limit                         限定数量
+    RowBounds()                             无参构造函数
+    RowBounds(int offset, int limit)        有参构造函数
+
+## 分页公共类(Pagination)
+    transient int offset                    起始数
+    transient int limit                     限定数
+    int total                               查询总数
+    int size                                每页数量
+    int pages                               总页数
+    int current                             当前页码
+    transient boolean searchCount           是否查找总数
+    transient boolean openSort              是否开启排序
+    transient List<String> ascs             正序的字段名List
+    transient List<String> descs            倒叙的字段名List
+    transient boolean isAsc                 是否正序
+    transient String orderByField           正序的字段
+    Pagination()
+    无参构造函数
+    Pagination(int current, int size)
+    有参构造函数
+    Pagination(int current, int size, boolean searchCount)
+    有参构造函数
+    Pagination(int current, int size, boolean searchCount, boolean openSort)
+    有参构造函数
+
+## 分页搜索类(Page)
+    List<T> records                         搜索记录
+    transient Map<String, Object> condition 搜索条件
+    Page()
+    无参构造函数
+    Page(int current, int size)
+    有参构造函数
+    Page(int current, int size, String orderByField)
+    有参构造函数
+    Page(int current, int size, String orderByField, boolean isAsc)
+    有参构造函数
+
+## 分页返回值类(PageInfo)
+    List<T> rows                            结果集
+    long total                              总数
+    PageInfo(Page<T> page)                  有参构造函数
+
+# 对象有效性校验类(CheckUtil)
+## 常用方法
+    static boolean isDate(String date,String format)
+    判断字符串是否是指定格式的时间
+    static boolean valid(String src)
+    判断字符串是否为空
+    static boolean valid(String... src)
+    判断一组字符串是否为空
+    static boolean valid(Object obj)
+    判断一个对象是否为空
+    static boolean valid(Object... objs)
+    判断一组对象是否为空
+    static boolean valid(Collection col)
+    判断集合是否为空
+    static boolean valid(Collection... cols)
+    判断一组集合是否为空
+    static boolean valid(Map map)
+    判断map是否为空
+    static boolean valid(Map... maps)
+    判断一组map是否有效
+
+# 获取系统信息相关的工具方法(SysUtil)
+## 常用变量
+    static final String JVM_VERSION                 JVM版本
+    static final String JVM_ENCODING                JVM的编码
+    static String OS_ARCH                           主机架构
+    static String OS_NAME                           主机类型
+    static String OS_VERSION                        主机类型版本
+    static String SUN_DESKTOP                       操作系统类型
+    static String CURRENT_USER                      当前用户
+    static String CURRENT_USER_HOME                 当前用户的家目录
+## 常用方法
+    static long usedMemory()
+    已使用的物理内存
+    static long JVMtotalMem()
+    获取JVM内存总量
+    static long JVMfreeMem()
+    虚拟机空闲内存量
+    static long JVMmaxMem()
+    虚拟机使用最大内存量
+    static void setHttpProxy(String host, String port, String username, String password)
+    设置HTTP代理
+    static void setHttpProxy(String host, String port)
+    设置HTTP代理
+
+# 常用的属性文件相关的方法(PropertiesUtil)
+## 常用方法
+    static String key(String key)
+    从系统属性文件中获取相应的值
+    static String GetValueByKey(String filePath, String key)
+    从文件中根据Key读取Value
+    static Map<String,String> GetAllProperties(String filePath)
+    读取Properties的全部信息
+    static void WriteProperties(String filePath, String pKey, String pValue)
+    写入Properties信息
+
+# FTP类
+## FTP文件熟悉(FileAttr)
+    String fileName         文件名
+    Date ModifyTime         上传时间
+    Long   size             文件大小
+
+## 包装FTP的相关的信息(FTPConfig)
+    String  hostName                主机名
+    int     port                    端口号
+    String  username                用户名
+    String  password                密码
+    String  remoteDir               远程路径
+    String  localDir                本地路径
+    String  remoteEncoding          远程编码
+    boolean passiveMode             是否是被动模式
+    FTPConfig(String hostName, int port, String username, String password, String remoteDir, String localDir,String remoteEncoding, boolean passiveMode)
+    有参构造函数
+
+## FTP状态码以及描述(FTPConstant)
+
+## FTP上传日志(FTPLog)
+    String host                     主机
+    String operation                操作
+    int    ReplyCode                返回code
+    String localFile                本地文件
+    String remoteFile               远程文件
+    String ReplyCodeDesc            返回描述
+    String createTime               创建时间
+
+## FTP工具类(FTPUtil接口, FTPUtilImpl实现类)
+    boolean isExists(String fileName)
+    判断远程文件是否存在
+    boolean downLoad(String fileName)
+    下载远程文件
+    boolean downLoadDir(String directory)
+    下载远程目录
+    boolean deleteFile(String fileName)
+    删除远程文件
+    boolean deleteDir(String directory)
+    删除远程目录
+    boolean putFile(String fileName, String remoteFileName, boolean isDelete)
+    上传本地文件到远程目录
+    boolean putFile(File file, String remoteFileName, boolean isDelete)
+    上传本地文件到远程目录
+    boolean putDir(String fileName, String remoteDir)
+    上传本地目录到远程
+    boolean putDir(File file, String remoteDir)
+    上传本地目录到远程
+    boolean mkDir(String destory)
+    创建文件夹
+    List<String> listFile(String directory)
+    获取远程文件列表
+    LinkedList<String> listDir(String direcotyr)
+    获取远程文件夹的目录结构
+     Map<String,FileAttr> listFileAttr(String directory)
+    获取远程文件属性以Map形式返回
+    boolean changeWorkDir(String directory)
+    改变FTP连接的工作目录
+    String getWorkDir()
+    获取当前连接的工作目录
+    boolean changName(String oldName, String newName)
+    重命名文件
+    FTPClient client()
+    返回FTPCliend对象(已经打开连接)
+    void destory()
+    释放所有的资源
+
+#FileUtil文件相关的工具类
+##常量方法
+    static boolean appendLine(java.io.File file, java.lang.String str)
+    在文件末尾追加一行
+    static boolean cleanFile(java.io.File file)
+    快速清空一个超大的文件
+    static boolean copy(java.io.File file, java.lang.String targetFile)
+    复制文件 通过该方式复制文件文件越大速度越是明显
+    static boolean copy(java.lang.String resourcePath, java.lang.String targetPath)
+    复制文件
+    static void    copyDir(java.io.File filePath, java.lang.String targetPath)
+    复制目录
+    static void    copyDir(java.lang.String filePath, java.lang.String targetPath)
+    复制目录
+    static int countLines(java.io.File file)
+    获取文件的行数
+    static java.lang.String    cpdetector(java.io.File file)
+    获取文件的编码(cpDetector)探测
+    static boolean createFiles(java.lang.String filePaht)
+    创建文件支持多级目录
+    static void    createPaths(java.lang.String paths)
+    创建多级目录
+    static boolean deleteBigFile(java.io.File file)
+    快速的删除超大的文件
+    static boolean deleteDir(java.io.File file)
+    删除一个目录
+    static boolean deleteFile(java.io.File file)
+    删除一个文件
+    static java.lang.String    FileType(java.io.File file)
+    获取文件的类型
+    static java.lang.String    hash(java.io.File file)
+    获取文件的Hash
+    static java.util.List<java.lang.String>    Lines(java.io.File file)
+    以列表的方式获取文件的所有行
+    static java.util.List<java.lang.String>    Lines(java.io.File file, int lines)
+    以列表的方式获取文件的指定的行数数据
+    static java.util.List<java.io.File>    listFile(java.io.File path)
+    罗列指定路径下的全部文件
+    static java.util.List<java.io.File>    listFile(java.lang.String path)
+    罗列指定路径下的全部文件
+    static java.util.List<java.io.File>    listFileAll(java.io.File path)
+    罗列指定路径下的全部文件包括文件夹
+    static java.util.List<java.io.File>    listFileFilter(java.io.File dirPath, java.lang.String postfixs)
+    获取指定目录下的特点文件,通过后缀名过滤
+    static java.lang.String    MimeType(java.lang.String file)
+    获取文件的Mime类型
+    static java.util.Date  modifyTime(java.io.File file)
+    获取文件最后的修改时间
+    static java.util.List<java.io.File>    searchFile(java.io.File dirPath, java.lang.String fileName)
+    在指定的目录下搜寻文个文件
+    static java.util.List<java.io.File>    searchFileReg(java.io.File dirPath, java.lang.String reg)
+    查找符合正则表达式reg的的文件
+    static java.lang.String    SimpleEncoding(java.lang.String file)
+    利用简单的文件头字节特征探测文件编码
 
 ## 获取异常的堆栈信息
-
-## easyUIDataGrid对象返回值
-
-## ftp上传下载工具类
-* 向FTP服务器上传文件 
-* 从FTP服务器下载文件
 
 ## 各种id生成策略
 * 图片名生成
 * 商品id生成
 
-## 上传图片返回值
-
 ## 自定义响应结构
 
-## jedis操作 
-
-## 常用的校验操作工具类
-* 验证字符串是不是邮箱
-* 验证字符串是不是手机号
-* 验证身份证是否有效
-* 验证姓名是否有效
-* 验证昵称是否有效
-* 验证密码格式是否有效
-* 验证区号是否有效
-* 验证邮箱编码是否有效
-* 验证银行卡是否有效
-* 通过身份证获取性别
-* 通过身份证获取生日
-* 通过身份证获取年龄 2种
-* 通过生日日期获取年龄
-* 通过生日字符串获取年龄 4种
-* 验证是否为日期
+## jedis操作
 
 ## 常用工具类
 * 生成6位随机数字，手机验证码
@@ -293,60 +517,7 @@
     static java.lang.String    getParentPath(java.lang.String file)
     返回相一个目录的对于本身的相对父目录
 
-#FileUtil文件相关的工具类
-##常量方法
-    static boolean appendLine(java.io.File file, java.lang.String str)
-    在文件末尾追加一行
-    static boolean cleanFile(java.io.File file)
-    快速清空一个超大的文件
-    static boolean copy(java.io.File file, java.lang.String targetFile)
-    复制文件 通过该方式复制文件文件越大速度越是明显
-    static boolean copy(java.lang.String resourcePath, java.lang.String targetPath)
-    复制文件
-    static void    copyDir(java.io.File filePath, java.lang.String targetPath)
-    复制目录
-    static void    copyDir(java.lang.String filePath, java.lang.String targetPath)
-    复制目录
-    static int countLines(java.io.File file)
-    获取文件的行数
-    static java.lang.String    cpdetector(java.io.File file)
-    获取文件的编码(cpDetector)探测
-    static boolean createFiles(java.lang.String filePaht)
-    创建文件支持多级目录
-    static void    createPaths(java.lang.String paths)
-    创建多级目录
-    static boolean deleteBigFile(java.io.File file)
-    快速的删除超大的文件
-    static boolean deleteDir(java.io.File file)
-    删除一个目录
-    static boolean deleteFile(java.io.File file)
-    删除一个文件
-    static java.lang.String    FileType(java.io.File file)
-    获取文件的类型
-    static java.lang.String    hash(java.io.File file)
-    获取文件的Hash
-    static java.util.List<java.lang.String>    Lines(java.io.File file)
-    以列表的方式获取文件的所有行
-    static java.util.List<java.lang.String>    Lines(java.io.File file, int lines)
-    以列表的方式获取文件的指定的行数数据
-    static java.util.List<java.io.File>    listFile(java.io.File path)
-    罗列指定路径下的全部文件
-    static java.util.List<java.io.File>    listFile(java.lang.String path)
-    罗列指定路径下的全部文件
-    static java.util.List<java.io.File>    listFileAll(java.io.File path)
-    罗列指定路径下的全部文件包括文件夹
-    static java.util.List<java.io.File>    listFileFilter(java.io.File dirPath, java.lang.String postfixs)
-    获取指定目录下的特点文件,通过后缀名过滤
-    static java.lang.String    MimeType(java.lang.String file)
-    获取文件的Mime类型
-    static java.util.Date  modifyTime(java.io.File file)
-    获取文件最后的修改时间
-    static java.util.List<java.io.File>    searchFile(java.io.File dirPath, java.lang.String fileName)
-    在指定的目录下搜寻文个文件
-    static java.util.List<java.io.File>    searchFileReg(java.io.File dirPath, java.lang.String reg)
-    查找符合正则表达式reg的的文件
-    static java.lang.String    SimpleEncoding(java.lang.String file)
-    利用简单的文件头字节特征探测文件编码
+
 #PrintUtil打印相关的工具类
 ##常量方法
     static void    print(java.util.Enumeration enums)
@@ -387,10 +558,6 @@
     返回一个定长的随机纯小写字母字符串(只包含大小写字母)
     static java.lang.String    ZeroString(int length)
     生成一个定长的纯0字符串
-#RegUtil正则相关的工具类
-##常量方法
-    static boolean isMatche(java.lang.String str, java.lang.String reg)
-    判断字符串str是否符合正则表达式reg
 #SecUtil安全相关的工具类
 ##常量方法
     static java.lang.String    FileMD5(java.io.File file)

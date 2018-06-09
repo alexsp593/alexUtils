@@ -24,7 +24,7 @@ import java.util.Map;
  * @Author:Alex
  * @Date:2018年06月05日11点16分
  */
-public class HttpClientUtil {
+public final class HttpClientUtil {
 
     /**
      * get方式请求数据

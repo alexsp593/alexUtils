@@ -12,7 +12,7 @@ import java.util.logging.Logger;
  * @Author:Alex
  * @Date:2018年06月04日10点27分
  */
-public class JsonUtils {
+public final class JsonUtils {
 
     /**
      * 将List对象序列化为JSON文本

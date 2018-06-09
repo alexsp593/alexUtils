@@ -3,7 +3,7 @@ package com.alex.utils.page;
 import java.util.List;
 
 /**
- * @Deception:
+ * @Deception:分页返回值类
  * @Author:Alex
  * @Date:2018年06月06日10点40分
  */
