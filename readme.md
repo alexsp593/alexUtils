@@ -261,8 +261,8 @@
     void destory()
     释放所有的资源
 
-#FileUtil文件相关的工具类
-##常量方法
+# 文件相关的工具类(FileUtil)
+## 常量方法
     static boolean appendLine(java.io.File file, java.lang.String str)
     在文件末尾追加一行
     static boolean cleanFile(java.io.File file)
