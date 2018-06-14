@@ -11,7 +11,7 @@ import java.security.Key;
  * @Author:Alex
  * @Date:2018年06月08日19点53分
  */
-public class DESUtil {
+public final class DESUtil {
 
     // 向量
     private final static String iv = "01234567";

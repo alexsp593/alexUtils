@@ -7,7 +7,7 @@ import java.io.UnsupportedEncodingException;
  * @Author:Alex
  * @Date:2018年06月09日10点17分
  */
-public class Blowfish {
+public final class Blowfish {
     private static final int[]
             KP = {
             0x243F6A88, 0x85A308D3, 0x13198A2E, 0x03707344,

@@ -8,7 +8,7 @@ import java.security.MessageDigest;
  * @Author:Alex
  * @Date:2018年06月08日17点50分
  */
-public class SecureHA {
+public final class SecureHA {
 
     public static final String KEY_SHA = "SHA";
 

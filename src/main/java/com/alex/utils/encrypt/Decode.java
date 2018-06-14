@@ -5,7 +5,7 @@ package com.alex.utils.encrypt;
  * @Author:Alex
  * @Date:2018年06月09日08点37分
  */
-public class Decode {
+public final class Decode {
     /**
      * 比较安全的字符串转换
      * @param str

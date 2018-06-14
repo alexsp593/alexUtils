@@ -243,6 +243,24 @@
     PageInfo(Page<T> page)                  有参构造函数
 
 
+# map类地图
+## 经纬度相关的一些操作类(CoordinateUtil)
+static double distance(double long1, double lat1, double long2, double lat2)
+计算地球上任意两点(经纬度)距离
+
+
+# Web类
+## Web相关的工具类(WebUtil)
+    static String escape(String src)
+    对字符串进行编码
+    static String unescape(String src)
+    对字符串进行解码
+    static String unhtml(String content)
+    HTML标签转义方法
+    static String html(String content)
+    HTML标签反转义方法
+
+
 # 数组工具类(ArrayUtil)
 ## 常量方法
     static int doueleBitCount(double dd)
@@ -282,6 +300,72 @@
     将字符编码转换成UTF-8码
 
 
+# 字节字符工具类(CharUtil)
+## 常用方法
+    static char toChar(byte b)
+    将有符号的字节转换为无符号的字符
+    static byte[] toSimpleByteArray(char[] carr)
+    通过剥离每个字符的高位字节，将字符数组转换为字节数组
+    static byte[] toSimpleByteArray(CharSequence charSequence)
+    将字符序列转换为字节数组
+    static char[] toSimpleCharArray(byte[] barr)
+    将字节数组转换为字符数组，将字节数组转换为字符数组
+    static int toAscii(char c)
+    返回字符的ASCII值。在过载情况下，返回0x3f
+    static byte[] toAsciiByteArray(char[] carr)
+    将字符数组转换为{@ Link LyToTasCII（CHAR）ASCII}数组
+    static byte[] toAsciiByteArray(CharSequence charSequence)
+    将字符序列转换为ASCII字节数组
+    static byte[] toRawByteArray(char[] carr)
+    将字符数组转换为字节数组，用两个字节替换每个字符
+    static char[] toRawCharArray(byte[] barr)
+    将字节数组转换为字符数组
+    static byte[] toByteArray(char[] carr)
+    使用默认JoDD编码将字符数组转换为字节数组
+    static byte[] toByteArray(char[] carr, String charset)
+    使用提供的编码将字符数组转换为字节数组
+    static char[] toCharArray(byte[] barr)
+    将默认JoDD编码的字节数组转换为字符数组
+    static char[] toCharArray(byte[] barr, String charset)
+    将特定编码字节数组转换为字符数组
+    static boolean equalsOne(char c, char[] match)
+    如果一个字符等于给定字符中的任何一个字符，则匹配
+    static int findFirstEqual(char[] source, int index, char[] match)
+    查找给定数组中第一个字符的索引，匹配给定字符集中的任何一个字符
+    static int findFirstEqual(char[] source, int index, char match)
+    查找给定数组中第一个字符的索引，匹配给定字符集中的任何一个字符
+    static int findFirstDiff(char[] source, int index, char[] match)
+    查找给定数组中第一个字符的索引，不同于给定的字符集
+    static int findFirstDiff(char[] source, int index, char match)
+    查找给定数组中第一个字符的索引，不同于给定的字符集
+    static boolean isWhitespace(char c)
+    如果字符是空格（{@代码<＝`}）），则返回空格（{@代码<＝`}）。空格定义是从String类（参见：trim()）获取的
+    static boolean isLowercaseAlpha(char c)
+    如果指定的字符是小写的ASCII，则返回true
+    static boolean isUppercaseAlpha(char c)
+    如果指定的字符是大写的ASCII，则返回true
+    static boolean isAlpha(char c)
+    指示给定字符是否在{@代码alpha }集合中
+    static boolean isDigit(char c)
+    指示给定字符是否在{@代码位数}集合中
+    static boolean isHexDigit(char c)
+    指示给定字符是否为十六进制数字
+    static boolean isGenericDelimiter(int c)
+    指示给定字符是否在Gen Delims集合中
+    static boolean isSubDelimiter(int c)
+    指示给定字符是否在sub-delims集合中
+    static boolean isReserved(char c)
+    指示给定字符是否在reserved集合中
+    static boolean isUnreserved(char c)
+    指示给定字符是否在unreserved集合中
+    static boolean isPchar(char c)
+    指示给定字符是否在pChar集合中
+    static char toUpperAscii(char c)
+    提高小写字母ASCII字符
+    static char toLowerAscii(char c)
+    降低大写字母ASCII字符
+
+
 # 对象有效性校验类(CheckUtil)
 ## 常用方法
     static boolean isDate(String date,String format)
@@ -302,6 +386,100 @@
     判断map是否为空
     static boolean valid(Map... maps)
     判断一组map是否有效
+
+
+# 中文工具类(ChineseUtil)
+## 常用方法
+    static String getPingYin(String inputString)
+    将字符串中的中文转化为拼音,其他字符不变
+    static String getFirstSpell(String chinese)
+    获取汉字串拼音首字母，英文字符不变
+    static String getFullSpell(String chinese)
+    获取汉字串拼音，英文字符不变
+    static boolean isChineseByREG(String str)
+    只能判断部分CJK字符（CJK统一汉字）
+    static boolean isChineseByName(String str)
+    只能判断部分CJK字符（CJK统一汉字）
+    static boolean isChinese(String strName)
+    完整的判断中文汉字和符号
+    static boolean isChinese(char c)
+    判断是否是中文
+    static int ChineseLength(String str)
+    获取一个字符串中中文字符的个数
+    static boolean isMessyCode(String strName)
+    判断是否是乱码
+
+
+# Java Class与反射相关的工具类(ClassUtil)
+## 常量方法
+    static List<String> getClassName(String packageName, boolean childPackage)
+    获取指定目录下所有的类名
+    static String[] getField(String className)
+    获取指定类的全部属性字段
+    static String[] getMethod(String className)
+    获取对象的全部方法
+    static void getter(Object obj, String att)
+    调用对象的getter方法
+    static String[] getPublicField(String className, boolean extendsField)
+    获取类中的公共属性
+    static String[] getProtectedField(String className)
+    获取类中定义的protected类型的属性字段
+    static String[] getPrivateField(String className)
+    获取类中定义的private类型的属性字段
+    static String[] getPublicMethod(String className, boolean extendsMethod)
+    获取对象的全部public类型方法
+    static String[] getProtectedMethod(String className, boolean extendsMethod)
+    获取对象的全部protected类型方法
+    static String[] getPrivateMethod(String className)
+    获取对象的全部private类型方法
+    static void setter(Object obj, String att, .Object value, Class<?> type)
+    调用对象的setter方法
+    static List<String> getClassNameByFile(String filePath, boolean childPackage)
+    从项目文件获取某包下所有类
+    static List<String> getClassNameByJar(String jarPath)
+    从jar获取某包下所有类
+    static Class loadClass(String className)
+    加载指定的类
+    static List<String> getResourceNameByJar(String jarPath)
+    获取jar包中的非*.class外的全部资源文件名字
+    static List<String> getResourceNameByJar(String jarPath, String suffix)
+    获取jar包中的非*.class外的全部的以suffix结尾的资源文件
+    static String getSuperClass(String className)
+    获取一个类的父类
+    static String[] getSuperClassChian(String className)
+    获取一个类的继承链
+    static String[] getInterfaces(String className, boolean extendsInterfaces)
+    获取一类实现的全部接口
+
+
+# 常用类型转换工具类(ConvertUtil)
+## 常用方法
+    static byte[] shortToByte(short number)
+    短整型与字节的转换
+    static short byteToShort(byte[] b)
+    字节的转换与短整型
+    static byte[] intToByte(int i)
+    整型与字节数组的转换
+    static byte[] intToByte(int[] arr)
+    整型数组转换为字节数组的转换
+    static byte[] encodeBytes(byte[] source, char split)
+    对字节数组进行encode编码
+    static char[] bytesToChars(byte[] bytes)
+    字节数组转字符数组
+    static int bytesToInt(byte[] bytes)
+    字节数组和整型的转换
+    static byte[] longToByte(long number)
+    字节数组和长整型的转换
+    static long byteToLong(byte[] b)
+    字节数组和长整型的转换
+    static String byteToBinary(byte src)
+    将byte转换为对应的二进制字符串
+    static String hexStringtoBinarg(String hexStr)
+    将十六进制字符串转为二进制字符串
+    static String bytesToHexString(byte[] bytes)
+    将二进制转换为十六进制字符输出
+    static byte[] hexStringToByte(String hexString)
+    把16进制字符串转换成字节数组
 
 
 # cookie的读写
@@ -424,6 +602,23 @@
     发送邮件
 
 
+# 异常处理的工具类(ExceptionUtil)
+## 常用方法
+static String stackTraceToString(Throwable e, String packageName)
+只返回指定包中的异常堆栈信息
+static String stackTraceToString(Throwable e)
+获取异常信息
+
+
+# FilePathUtil文件路径相关的工具类
+
+## 常量方法
+    static java.lang.String    commandPath(java.lang.String file)
+    返回一个通用的文件路径
+    static java.lang.String    getParentPath(java.lang.String file)
+    返回相一个目录的对于本身的相对父目录
+
+
 # 文件相关的工具类(FileUtil)
 ## 常量方法
     static boolean appendLine(File file, String str)
@@ -522,6 +717,14 @@
 	将JSON文本反序列化为主从关系的实体
 
 
+# 密码相关的工具类(PasswordUtil)
+## 常用方法
+    static String md5(String password)
+    字符串加密函数MD5实现
+    static  boolean isSec(String password)
+    判断一个密码是否健壮：必选包含数字、大写字母、小写字母、特殊字符，长度在8到15位
+
+
 # 常用的属性文件相关的方法(PropertiesUtil)
 ## 常用方法
     static String key(String key)
@@ -581,6 +784,20 @@
     验证银行卡是否有效
     static boolean validatePostalCode(String postalCode)
     验证邮编是否有效
+
+
+# Stream相关的工具类(StreamUtil)
+## 常量方法
+    static String streamToString(InputStream in)
+    将输入流读入字符串
+    static byte[] stream2Byte(InputStream is)
+    将输入流读入字节数组
+    static byte[] inputStream2Byte(InputStream inStream)
+    输入流转为字节数组
+    static InputStream byte2InputStream(byte[] b)
+    字节数组转为输入流
+    static void streamSaveAsFile(InputStream is, File outfile)
+    将流另存为文件
 
 
 # StringUtil字符串相关的工具类
@@ -695,9 +912,14 @@
     设置HTTP代理
 
 
+# zip相关的工具类(ZIPUtil)
+## 常量方法
+    static void deCompress(File file, String dest)
+    文档压缩
+    static void unCompress(File source, String path)
+    文档解压
+    static void zipFile(File inFile, ZipOutputStream zos, String dir)
 
-
-## 获取异常的堆栈信息
 
 ## 各种id生成策略
 * 图片名生成
@@ -723,115 +945,3 @@
 * 获取时间戳作为递增Id
 * 解析出Url参数中的键值对
 * 生成随机密码
-
-
-
-
-# ClassUtil-Class与反射相关的一些工具类
-
-## 常量方法
-    static java.util.List<java.lang.String>    getClassName(java.lang.String packageName, boolean childPackage)
-    static java.lang.String[]  getField(java.lang.String className)
-    获取指定类的全部属性字段
-    static java.lang.String[]  getMethod(java.lang.String className)
-    获取对象的全部方法
-    static void    getter(java.lang.Object obj, java.lang.String att)
-    调用对象的getter方法
-    static java.lang.String    initStr(java.lang.String old)
-    java.lang.Class    loadClass(java.lang.String className)
-    加载指定的类
-    static <T> T   propertiesCopy(java.lang.Object obj, java.lang.Class<T> type)
-    同名属性值复制 将对象obj内属性名同类型T内容有同名属性的值复制到类型T中，并返回一个类型T的对象
-    static <T> T   propertiesCopyIgnore(java.lang.Object obj, java.lang.Class<T> type)
-    同名属性值复制（忽略大小写） 将对象obj内属性名同类型T内容有同名属性的值复制到类型T中，并返回一个类型T的对象
-    static <T> T   propertiesCopyIgnoreFilter(java.lang.Object obj, java.lang.Class<T> type, java.lang.String IgnoreStr)
-    同名属性值复制（比较时忽略字符IgnoreStr的内容） 将对象obj内属性名同类型T内容有同名属性的值复制到类型T中，并返回一个类型T的对象
-    static void    setter(java.lang.Object obj, java.lang.String att, java.lang.Object value, java.lang.Class<?> type)
-    调用对象的setter方法
-# ChinesUtil中文相关的工具类
-
-## 常量方法
-    static java.lang.String    getFirstSpell(java.lang.String chinese)
-    获取汉字串拼音首字母，英文字符不变
-    static java.lang.String    getFullSpell(java.lang.String chinese)
-    获取汉字串拼音，英文字符不变
-    static java.lang.String    getPingYin(java.lang.String inputString)
-    将字符串中的中文转化为拼音,其他字符不变
-    static boolean isChinese(java.lang.String strName)
-    static boolean isChineseByName(java.lang.String str)
-    static boolean isChineseByREG(java.lang.String str)
-    static void    main(java.lang.String[] args)
-# ConvertUtil转换相关的工具类
-
-## 常量方法
-    static int bytesToInt(byte[] bytes)
-    static long    byteToLong(byte[] b)
-    static short   byteToShort(byte[] b)
-    static byte[]  intToByte(int i)
-    static byte[]  longToByte(long number)
-    static byte[]  shortToByte(short number)
-
-
-# FilePathUtil文件路径相关的工具类
-
-## 常量方法
-    static java.lang.String    commandPath(java.lang.String file)
-    返回一个通用的文件路径
-    static java.lang.String    getParentPath(java.lang.String file)
-    返回相一个目录的对于本身的相对父目录
-
-
-# PrintUtil打印相关的工具类
-## 常量方法
-    static void    print(java.util.Enumeration enums)
-    遍历打印Enumeration
-    static void    print(java.util.List<?> list)
-    遍历打印遍历List集合
-    static void    print(java.util.Map map)
-    遍历打印Map集合
-    static void    print(java.lang.String str)
-    static void    println(java.lang.Object obj)
-    static void    println(java.lang.String str)
-
-# ProUtil属性文件相关的工具类
-## 常量方法
-    static java.lang.String    GetAllProperties(java.lang.String filePath)
-    读取Properties的全部信息
-    static java.lang.String    GetValueByKey(java.lang.String filePath, java.lang.String key)
-    根据Key读取Value
-    static java.lang.String    key(java.lang.String key)
-    static void    WriteProperties(java.lang.String filePath, java.lang.String pKey, java.lang.String pValue)
-    写入Properties信息
-
-# SecUtil安全相关的工具类
-## 常量方法
-    static java.lang.String    FileMD5(java.io.File file)
-    static java.lang.String    md5(java.lang.String password)
-# StreamUtil-Stream相关的工具类
-## 常量方法
-    static java.io.InputStream byte2InputStream(byte[] b)
-    static byte[]  inputStream2Byte(java.io.InputStream inStream)
-    static byte[]  stream2Byte(java.io.InputStream is)
-    void   streamSaveAsFile(java.io.InputStream is, java.io.File outfile)
-    将流另存为文件
-    static java.lang.String    streamToString(java.io.InputStream in)
-    Read an input stream into a string
-
-# WebUtilWeb相关的工具类
-## 常量方法
-    static java.lang.String    escape(java.lang.String src)
-    static java.lang.String    getParamValue(java.lang.String url, java.lang.String paramName)
-    static void    main(java.lang.String[] args)
-    static void    print(javax.servlet.http.HttpServletRequest request)
-    static java.lang.String    removeParam(java.lang.String url, java.lang.String... paramNames)
-    static java.lang.String    removeParam(java.lang.String url, java.lang.String paramName)
-    static java.lang.String    setParam(java.lang.String url, java.lang.String paramName, java.lang.String paramValue)
-    static java.lang.String    unescape(java.lang.String src)
-    static java.lang.String    urlJoin(java.net.URL url, java.lang.String locationHeader)
-# ZIPUtil-zip相关的工具类
-## 常量方法
-    static void    deCompress(java.io.File file, java.lang.String dest)
-    文档压缩
-    static void    unCompress(java.io.File source, java.lang.String path)
-    文档解压
-    static void    zipFile(java.io.File inFile, java.util.zip.ZipOutputStream zos, java.lang.String dir)
