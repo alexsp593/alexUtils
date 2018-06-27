@@ -245,8 +245,8 @@
 
 # map类地图
 ## 经纬度相关的一些操作类(CoordinateUtil)
-static double distance(double long1, double lat1, double long2, double lat2)
-计算地球上任意两点(经纬度)距离
+    static double distance(double long1, double lat1, double long2, double lat2)
+    计算地球上任意两点(经纬度)距离
 
 
 # Web类
@@ -604,10 +604,10 @@ static double distance(double long1, double lat1, double long2, double lat2)
 
 # 异常处理的工具类(ExceptionUtil)
 ## 常用方法
-static String stackTraceToString(Throwable e, String packageName)
-只返回指定包中的异常堆栈信息
-static String stackTraceToString(Throwable e)
-获取异常信息
+    static String stackTraceToString(Throwable e, String packageName)
+    只返回指定包中的异常堆栈信息
+    static String stackTraceToString(Throwable e)
+    获取异常信息
 
 
 # FilePathUtil文件路径相关的工具类
