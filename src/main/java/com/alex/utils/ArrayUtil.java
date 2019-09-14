@@ -1,35 +1,40 @@
 package com.alex.utils;
 
 /**
- * @Deception:数组工具类
- * @Author:Alex
- * @Date:2018年06月10日17点51分
+ * 数组工具类
+ *
+ * @author: alex
+ * @date: 2018-06-10
  */
-public class ArrayUtil {
+public final class ArrayUtil {
     /**
      * 获取一个double类型的数字的小数位有多长
-     * @param dd
-     * @return
+     *
+     * @param number double类型数字
+     * @return 返回小数位数长度
      */
-    public static int doueleBitCount(double dd){
-        String temp = String.valueOf(dd);
+    public static int doubleBitCount(double number) {
+        String temp = String.valueOf(number);
         int i = temp.indexOf(".");
-        if(i > -1){
-            return temp.length()-i -1;
+        if (i > -1) {
+            return temp.length() - i - 1;
         }
         return 0;
-
     }
 
     /**
      * 获取一组double类型的数字的小数位数的数组
-     * @param arr
-     * @return
+     *
+     * @param numberArr 一组double类型数字数组
+     * @return 返回一组小数位数长度数组
      */
-    public static Integer[] doubleBitCount(double[] arr){
-        Integer[] len = new Integer[arr.length];
-        for (int i = 0; i < arr.length; i++) {
-            len[i] = doueleBitCount(arr[i]);
+    public static Integer[] doubleBitCount(double[] numberArr) {
+        if(numberArr == null){
+            return null;
+        }
+        Integer[] len = new Integer[numberArr.length];
+        for (int i = 0; i < numberArr.length; i++) {
+            len[i] = doubleBitCount(numberArr[i]);
         }
         return len;
     }

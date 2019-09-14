@@ -12,13 +12,15 @@ import java.util.Map;
  */
 @SuppressWarnings("rawtypes")
 public final class CheckUtil {
+
     /**
      * 判断字符串是否是符合指定格式的时间
-     * @param date 时间字符串
+     *
+     * @param date   时间字符串
      * @param format 时间格式
      * @return 是否符合
      */
-    public final static boolean isDate(String date,String format){
+    public static boolean isDate(String date, String format) {
         try {
             SimpleDateFormat sdf = new SimpleDateFormat(format);
             sdf.parse(date);
@@ -31,40 +33,51 @@ public final class CheckUtil {
 
     /**
      * 判断字符串有效性
+     *
+     * @param str 字符串
+     * @return 判断是否有效
      */
-    public final static boolean valid(String src) {
-        return !(src == null || "".equals(src.trim()));
+    public static boolean valid(String str) {
+        return !(str == null || "".equals(str.trim()));
     }
 
     /**
      * 判断一组字符串是否有效
-     * @param src
-     * @return
+     *
+     * @param strings 字符串数组
+     * @return 判断是否有效
      */
-    public final static boolean valid(String... src) {
-        for (String s : src) {
-            if (!valid(s)) {
+    public final static boolean valid(String... strings) {
+        if (strings == null) {
+            return false;
+        }
+
+        for (String str : strings) {
+            if (!valid(str)) {
                 return false;
             }
         }
         return true;
     }
 
-
     /**
      * 判断一个对象是否为空
+     *
+     * @param object 目标对象
+     * @return 如果对象不为空，则为true，反之为false
      */
-    public final static boolean valid(Object obj) {
-        return !(null == obj);
+    public static boolean valid(Object object) {
+        return null != object;
     }
 
     /**
      * 判断一组对象是否有效
-     * @param objs
-     * @return
+     *
+     * @param objects 一组对象
+     * @return 如果对象不为空并且长度不为0，则为true，反之为false
      */
-    public final static boolean valid(Object... objs) {
-        if (objs != null && objs.length != 0) {
+    public static boolean valid(Object... objects) {
+        if (objects != null && objects.length != 0) {
             return true;
         }
         return false;
@@ -72,19 +85,27 @@ public final class CheckUtil {
 
     /**
      * 判断集合的有效性
+     *
+     * @param collection 目标集合
+     * @return 如果集合不为空，则为true，反之为false
      */
-    public final static boolean valid(Collection col) {
-        return !(col == null || col.isEmpty());
+    public static boolean valid(Collection collection) {
+        return !(collection == null || collection.isEmpty());
     }
 
     /**
      * 判断一组集合是否有效
-     * @param cols
-     * @return
+     *
+     * @param collections 目标集合组
+     * @return 如果集合组不为空，则为true，反之为false
      */
-    public final static boolean valid(Collection... cols) {
-        for (Collection c : cols) {
-            if (!valid(c)) {
+    public static boolean valid(Collection... collections) {
+        if (collections == null || collections.length == 0) {
+            return false;
+        }
+
+        for (Collection collection : collections) {
+            if (!valid(collection)) {
                 return false;
             }
         }
@@ -93,21 +114,27 @@ public final class CheckUtil {
 
     /**
      * 判断map是否有效
-     * @param map
-     * @return
+     *
+     * @param map 目标map
+     * @return 如果map不为空，则为true，反之为false
      */
-    public final static boolean valid(Map map) {
+    public static boolean valid(Map map) {
         return !(map == null || map.isEmpty());
     }
 
     /**
      * 判断一组map是否有效
-     * @param maps 需要判断map
+     *
+     * @param maps 目标map组
      * @return 是否全部有效
      */
     public final static boolean valid(Map... maps) {
-        for (Map m : maps) {
-            if (!valid(m)) {
+        if (maps == null || maps.length == 0) {
+            return false;
+        }
+
+        for (Map map : maps) {
+            if (!valid(map)) {
                 return false;
             }
         }

@@ -5,9 +5,10 @@ import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 
 /**
- * @Deception:编码相关的封装类
- * @Author:Alex
- * @Date:2018年06月09日14点16分
+ * 编码相关的封装类
+ *
+ * @author alex
+ * @date 2018-06-09
  */
 public final class CharsetUtil {
     /**
@@ -26,6 +27,11 @@ public final class CharsetUtil {
     public static final String UTF_8 = "UTF-8";
 
     /**
+     * 16 位 UCS 转换格式，字节顺序由可选的字节顺序标记来标识
+     */
+    public static final String UTF_16 = "UTF-16";
+
+    /**
      * 16 位 UCS 转换格式，Big Endian（最低地址存放高位字节）字节顺序
      */
     public static final String UTF_16BE = "UTF-16BE";
@@ -36,61 +42,77 @@ public final class CharsetUtil {
     public static final String UTF_16LE = "UTF-16LE";
 
     /**
-     * 16 位 UCS 转换格式，字节顺序由可选的字节顺序标记来标识
-     */
-    public static final String UTF_16 = "UTF-16";
-
-    /**
      * 中文超大字符集
      */
     public static final String GBK = "GBK";
 
     /**
      * 将字符编码转换成US-ASCII码
+     *
+     * @param str 待转码的字符串
+     * @return 转换成US-ASCII码的字符串
      */
-    public final static String toASCII(String str) throws UnsupportedEncodingException {
+    public static final String toAscii(String str) throws UnsupportedEncodingException {
         return changeCharset(str, US_ASCII);
     }
 
     /**
      * 将字符编码转换成ISO-8859-1码
+     *
+     * @param str 待转码的字符串
+     * @return 转换成ISO-8859-1码的字符串
      */
-    public final static String toISO_8859_1(String str) throws UnsupportedEncodingException {
+    public static final String toIso88591(String str) throws UnsupportedEncodingException {
         return changeCharset(str, ISO_8859_1);
     }
 
     /**
      * 将字符编码转换成UTF-8码
+     *
+     * @param str 待转码的字符串
+     * @return 转换成UTF-8码的字符串
      */
-    public static String toUTF_8(String str) throws UnsupportedEncodingException {
+    public static final String toUtf8(String str) throws UnsupportedEncodingException {
         return changeCharset(str, UTF_8);
     }
 
     /**
      * 将字符编码转换成UTF-16BE码
+     *
+     * @param str 待转码的字符串
+     * @return 转换成UTF-16BE码的字符串
      */
-    public final static String toUTF_16BE(String str) throws UnsupportedEncodingException {
+    public static final String toUtf16Be(String str) throws UnsupportedEncodingException {
         return changeCharset(str, UTF_16BE);
     }
 
     /**
      * 将字符编码转换成UTF-16LE码
+     *
+     * @param str 待转码的字符串
+     * @return 转换成UTF-16LE码的字符串
      */
-    public final static String toUTF_16LE(String str) throws UnsupportedEncodingException {
+    public static final String toUtf16Le(String str) throws UnsupportedEncodingException {
         return changeCharset(str, UTF_16LE);
     }
 
     /**
      * 将字符编码转换成UTF-16码
+     *
+     * @param str 待转码的字符串
+     * @return 转换成UTF-16码的字符串
      */
-    public final static String toUTF_16(String str) throws UnsupportedEncodingException {
+    public static final String toUtf16(String str) throws UnsupportedEncodingException {
         return changeCharset(str, UTF_16);
     }
 
     /**
      * 将字符编码转换成GBK码
+     *
+     * @param str 待转码的字符串
+     * @return 转换成GBK码的字符串
      */
-    public final static String toGBK(String str) throws UnsupportedEncodingException {
+    public static final String toGbk(String str) throws UnsupportedEncodingException {
         return changeCharset(str, GBK);
     }
 
@@ -99,10 +121,9 @@ public final class CharsetUtil {
      *
      * @param str        待转换编码的字符串
      * @param newCharset 目标编码
-     * @return
-     * @throws UnsupportedEncodingException
+     * @return 获取目标编码
      */
-    public final static String changeCharset(String str, String newCharset) throws UnsupportedEncodingException {
+    public static final String changeCharset(String str, String newCharset) throws UnsupportedEncodingException {
         if (str != null) {
             // 用默认字符编码解码字符串。
             byte[] bs = str.getBytes();
@@ -112,9 +133,14 @@ public final class CharsetUtil {
         return null;
     }
 
-    public final static String getDefaultCharSet() throws UnsupportedEncodingException {
+    /**
+     * 获取默认字符串编码
+     *
+     * @return 字符串编码
+     */
+    public static final String getDefaultCharSet() throws UnsupportedEncodingException {
         OutputStreamWriter writer = new OutputStreamWriter(new ByteArrayOutputStream(), CharsetUtil.UTF_8);
-        String             enc    = writer.getEncoding();
+        String enc = writer.getEncoding();
         return enc;
     }
 
@@ -124,10 +150,9 @@ public final class CharsetUtil {
      * @param str        待转换编码的字符串
      * @param oldCharset 原编码
      * @param newCharset 目标编码
-     * @return
-     * @throws UnsupportedEncodingException
+     * @return 返回目标编码
      */
-    public final static String changeCharset(String str, String oldCharset,
+    public static final String changeCharset(String str, String oldCharset,
                                              String newCharset) throws UnsupportedEncodingException {
         if (str != null) {
             // 用旧的字符编码解码字符串。解码可能会出现异常。
@@ -144,12 +169,12 @@ public final class CharsetUtil {
      * @param input 待转换字符串
      * @return 转换完成字符串
      */
-    public final static String toGBKWithUTF8(String input) throws UnsupportedEncodingException {
+    public static final String toGBKWithUTF8(String input) throws UnsupportedEncodingException {
         if (StringUtil.isEmpty(input)) {
             return "";
         } else {
             String s1;
-            s1 = new String(input.getBytes("ISO8859_1"), "GBK");
+            s1 = new String(input.getBytes(ISO_8859_1), GBK);
             return s1;
         }
     }
@@ -160,12 +185,12 @@ public final class CharsetUtil {
      * @param input 待转换字符串
      * @return 转换完成字符串
      */
-    public final static String toUnicodeWithGBK(String input) throws UnsupportedEncodingException {
+    public static final String toUnicodeWithGBK(String input) throws UnsupportedEncodingException {
         if (StringUtil.isEmpty(input)) {
             return "";
         } else {
             String s1;
-            s1 = new String(input.getBytes("GBK"), "ISO8859_1");
+            s1 = new String(input.getBytes(GBK), ISO_8859_1);
             return s1;
         }
     }
